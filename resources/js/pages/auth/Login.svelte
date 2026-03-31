@@ -10,6 +10,7 @@
     import AppHead from '@/components/AppHead.svelte';
     import InputError from '@/components/InputError.svelte';
     import PasswordInput from '@/components/PasswordInput.svelte';
+    import SocialLoginButtons from '@/components/SocialLoginButtons.svelte';
     import TextLink from '@/components/TextLink.svelte';
     import { Button } from '@/components/ui/button';
     import { Checkbox } from '@/components/ui/checkbox';
@@ -39,11 +40,14 @@
     </div>
 {/if}
 
-<Form
-    {...store.form()}
-    resetOnSuccess={['password']}
-    class="flex flex-col gap-6"
->
+<div class="flex flex-col gap-6">
+    <SocialLoginButtons />
+
+    <Form
+        {...store.form()}
+        resetOnSuccess={['password']}
+        class="flex flex-col gap-6"
+    >
     {#snippet children({ errors, processing })}
         <div class="grid gap-6">
             <div class="grid gap-2">
@@ -103,4 +107,5 @@
             </div>
         {/if}
     {/snippet}
-</Form>
+    </Form>
+</div>

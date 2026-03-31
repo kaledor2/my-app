@@ -10,6 +10,7 @@
     import AppHead from '@/components/AppHead.svelte';
     import InputError from '@/components/InputError.svelte';
     import PasswordInput from '@/components/PasswordInput.svelte';
+    import SocialLoginButtons from '@/components/SocialLoginButtons.svelte';
     import TextLink from '@/components/TextLink.svelte';
     import { Button } from '@/components/ui/button';
     import { Input } from '@/components/ui/input';
@@ -21,11 +22,14 @@
 
 <AppHead title="Register" />
 
-<Form
-    {...store.form()}
-    resetOnSuccess={['password', 'password_confirmation']}
-    class="flex flex-col gap-6"
->
+<div class="flex flex-col gap-6">
+    <SocialLoginButtons />
+
+    <Form
+        {...store.form()}
+        resetOnSuccess={['password', 'password_confirmation']}
+        class="flex flex-col gap-6"
+    >
     {#snippet children({ errors, processing })}
         <div class="grid gap-6">
             <div class="grid gap-2">
@@ -96,4 +100,5 @@
             </TextLink>
         </div>
     {/snippet}
-</Form>
+    </Form>
+</div>

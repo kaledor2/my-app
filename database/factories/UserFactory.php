@@ -57,4 +57,16 @@ class UserFactory extends Factory
             'two_factor_confirmed_at' => now(),
         ]);
     }
+
+    /**
+     * Indicate that the model was created via Google OAuth.
+     */
+    public function withGoogleAccount(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'google_id' => fake()->unique()->numerify('####################'),
+            'avatar' => fake()->imageUrl(),
+            'password' => null,
+        ]);
+    }
 }
